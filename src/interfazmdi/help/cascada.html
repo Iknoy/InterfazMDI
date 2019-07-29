@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>Cascada</title>
+	<style type="text/css">
+
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		h1 {
+			text-align: center;
+			color: white;
+			background-color: blue;
+		}
+		
+	</style>
+</head>
+<body>
+	<header id="header">
+		<h1>Cascada</h1>
+	</header><!-- /header -->
+	<section>
+	   <p> 
+       Al Darle Clic a esta Opcion el Usuario puede modificar el acomodo de los <b>JInternalFrame</b> se genera un oyente que hace un llamado al metodo <i><b>acomodoCascada()</b></i>.
+       <br>La Esctructura de el Metodo es el Siguiente: <br><br>
+        <code>
+<pre>
+    public void acomodoCascada(){
+        int xC,xH;
+        int yC,yH;
+        
+        xC=principal.getWidth()/15;
+        yC=principal.getHeight()/20;
+        
+        for (int i = 0; i < hija.length; i++) {
+            
+            yH=hija[i].getHeight()/2;
+            xH=hija[i].getWidth()/2;
+            hija[i].setSize(new Dimension(250, 200));
+            hija[i].setLocation((xC*(i+3))-xH, (yC*(i+3))-yH);
+            hija[i].moveToFront();
+        }
+        
+    }
+</pre>
+        </code>
+        Como vemos en el Codigo apartir de el ultimo JInternalFrame se hace un acomodo por medio del metodo <b>setLocation()</b> mediante una formula que lo hace para que se visualice las ventanas en cascada
+       </p>
+	</section>
+</body>
+</html>

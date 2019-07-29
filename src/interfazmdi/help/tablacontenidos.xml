@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<toc version="1.0"> 
+	<!--  categoryclosedimage="FolderClosed" categoryopenimage="FolderOpened" topicimage="ItemIco"-->
+	<tocitem text="Manual"    target="manual">
+		<tocitem text="Archivo"    target="archivvo">
+			<tocitem  text="Nuevo"  target="nuevo"/>
+			<tocitem text="Abrir" target="abrir"/>
+			<tocitem text="Guardar" target="guardar"/>
+			<tocitem text="Salir" target="salir"/>
+		</tocitem>
+		<tocitem text="Dispocision" target="dispocision">
+			<tocitem text="Cascada" target="cascada"/>
+			<tocitem text="Mosaico" target="mosaico"/>
+		</tocitem>
+		<tocitem text="Acerca de" target="acerca">
+			<tocitem text="Ayuda" target="ayuda"/>
+		</tocitem>
+	</tocitem>
+</toc>
