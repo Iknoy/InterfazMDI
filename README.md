@@ -1,2 +1,3 @@
 # InterfazMDI
-Interfaz para creación y manejo de notas en java
+
+Interfaz para creación y manejo de notas mediante la interfaz gráfica de java.
