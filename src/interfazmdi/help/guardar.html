@@ -1,0 +1,57 @@
+<html>
+<head>
+	<title>Guardar</title>
+	<style type="text/css">
+
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		h1 {
+			text-align: center;
+			color: white;
+			background-color: blue;
+		}
+		
+	</style>
+</head>
+<body>
+	<header id="header">
+		<h1>Guardar</h1>
+	</header><!-- /header -->
+	<section>
+	   <p> 
+       La Opcion guardar permite al usuario salvar los cambios que tenga dentro del <b>JInternalFrame </b> para asi poder guardarlo dentro de un archivo en alguna Ubicacion.
+       <br>
+       El usuario al darle Clic a la Opcion Guardar la aplicacion manda a llamar el metodo <i><b>guardarNota()</b></i> el cual esta estructurado de la siguiente forma:
+       <code>
+<pre>
+   public void guardarNota(){
+
+        for (int i = 0; i < hija.length; i++) {
+            if (hija[i].isSelected()){
+                try{
+                    JFileChooser file=new JFileChooser();
+                    file.showSaveDialog(principal);
+                    File guarda =file.getSelectedFile();
+                    if(guarda !=null){ /*guardamos el archivo y le damos el formato directamente, si queremos que se guarde en formato doc lo definimos como .doc*/
+                        try (FileWriter save = new FileWriter(guarda+".txt")) {
+                            save.write(hija[i].obtenerTexto());
+                        }
+                        JOptionPane.showMessageDialog(null,"El archivo se a guardado Exitosamente", "Guardado",JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+                catch(IOException ex){
+                    JOptionPane.showMessageDialog(null, "Su archivo no se ha guardado", "Advertencia",JOptionPane.WARNING_MESSAGE);
+                }
+                break;
+            }
+        }
+    }
+</pre>
+       </code>
+        Como podemos observar todo el comportamiento del metodo esta por medio de un for para asi saber en que ventana es la que se guardara el archivo, se instancia una variable de tipo <b><i> JFileChooser </i></b> despues con un <b>showSaveDialog</b> se agrega dentro de la ventana principal para mostrar un dialogo de guardar archivo.Dentro del try se instancia el metodo <b>Filewriter</b> con el parametro de el archivo seleccionado.
+       </p>
+	</section>
+</body>
+</html>

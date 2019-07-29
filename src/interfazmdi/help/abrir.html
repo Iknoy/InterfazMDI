@@ -1,0 +1,98 @@
+<html>
+<head>
+	<title>Abrir</title>
+	<style type="text/css">
+
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		h1 {
+			text-align: center;
+			color: white;
+			background-color: blue;
+		}
+		
+	</style>
+</head>
+<body>
+	<header id="header">
+		<h1>Abrir</h1>
+	</header><!-- /header -->
+	<section>
+	   <p> 
+                En esta Opcion el Usuario Puede Abrir un Documento externo, y se abrira dentro de un JInternalFrame.Cuando el Usuario da clic sobre la opcion <b>Abrir</b> la Aplicacion manda a llamar el metodo <b><i>abrirNota()</i></b> el cual esta Estructurado de la siguiente Forma:
+                <br>
+                <code>
+<pre>
+public void abrirNota(){
+        
+        if(contador <10){
+                 abrirArchivo();   
+                }
+                medidasPantalla(contador+1 );
+                try{
+                    int xH;
+                    int yH;
+                    hija[contador]=new VentanaHija();
+                    hija[contador].crearFrame(path, selected);
+                    hija[contador].setSize(new Dimension(250, 200));
+                    yH=hija[contador].getHeight()/2;
+                    xH=hija[contador].getWidth()/2;
+                    hija[contador].setLocation(x-xH, y-yH);
+                    escritorio.add(hija[contador]);
+                    contador++;
+                }catch(ArrayIndexOutOfBoundsException ex){
+                    JOptionPane.showMessageDialog(new JFrame(), "No se puede crear/adicionar más ventanas","Error",JOptionPane.ERROR_MESSAGE);
+                }
+    }
+</pre>
+                </code>
+
+        El Metodo evalua que el contador sea menor a 10 si cumple con la condicion manda a llamar al metodo <b>abrirArchivo</b> el cual tiene el siguiente codigo: <br>
+        <br>
+        <code>
+<pre>
+    public void abrirArchivo(){
+        
+        File archivo = null;
+        String aux="";   
+        String texto="";
+        try
+            {
+             JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                if(JFileChooser.APPROVE_OPTION == fileChooser.showOpenDialog(principal)){
+                    archivo = fileChooser.getSelectedFile();
+                    //Se asigna la dirección del archivo a un string 
+                    path=archivo.getPath();
+                }
+             if(archivo!=null)
+             {     
+                FileReader archivos=new FileReader(archivo);
+                 try (BufferedReader lee = new BufferedReader(archivos)) {
+                     while((aux=lee.readLine())!=null)
+                     {
+                         texto+= aux+ "\n";
+                     }}
+              }    
+             }
+             catch(IOException ex)
+             {
+               JOptionPane.showMessageDialog(null,ex+"\nNo se ha encontrado el archivo", "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
+              }
+        //El texto se almacena dentro de un string para utilizarlo despues 
+        selected=texto;
+            
+    }
+</pre>
+        </code>
+Empieza declarando un archivo nulo, con 2 variables de tipo <b>String</b> aux y texto.Se abre un <b>Try y un Catch </b> para los errores que puedan haber en la ejecucion, dentro de try se encuentra varios metodos como es el caso de el FileChooser que es el que nos muestra la navegacion de archivoa, en la variable archivo se guarda el archivo seleccionado.Ademas de que en la variable path se guarda la ruta del archivo.
+
+<br>
+
+Despues al crear el Frame se genera con la ruta del archivo y el texto del archivo.
+       </p>
+	</section>
+</body>
+</html>

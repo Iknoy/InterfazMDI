@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title>Mosaico</title>
+	<style type="text/css">
+
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		h1 {
+			text-align: center;
+			color: white;
+			background-color: blue;
+		}
+		
+	</style>
+</head>
+<body>
+	<header id="header">
+		<h1>Mosaico</h1>
+	</header><!-- /header -->
+	<section>
+	   <p> 
+        Esta Opcion Permite al Usuario ver los JFrames generados en Forma de Mosaico, es decir en cuadros alineados uno tras de otro.Cuando el usuario le da Clic a la Opcion <b>Mosaico</b>.se Manda a llamar al metodo <i><b>acomodoMosaico()</b></i> la estructura de el metodo es la siguiente: <br><br>
+        <code>
+<pre>
+    public void acomodoMosaico(){
+        int xH;
+        int yH;
+        for (int i = 0; i < hija.length; i++) {
+            medidasPantalla(i+1);
+            yH=hija[i].getHeight()/2;
+            xH=hija[i].getWidth()/2;
+            hija[i].setSize(new Dimension(250, 200));
+            hija[i].setLocation(x-xH, y-yH);
+        }
+        
+    }
+</pre>
+        </code>
+        De la Misma Forma que el acomo de cascada a partir de el ultimo frame creado se genera un calculo restandole la posicion del anterior frame y colocandolo con el metodo <b>setLocation()</b>&
+       </p>
+	</section>
+</body>
+</html>

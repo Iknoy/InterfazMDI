@@ -1,0 +1,121 @@
+<html>
+<head>
+	<title>Nuevo</title>
+	<style type="text/css">
+
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		h1 {
+			text-align: center;
+			color: white;
+			background-color: blue;
+		}
+		
+	</style>
+</head>
+<body>
+	<header id="header">
+		<h1>Nuevo</h1>
+	</header><!-- /header -->
+	<section>
+		<p>
+			Esta Opcion permite al usuario poder generar un nuevo archivo en blanco dentro de nuestra aplicacion.
+			<br>
+			Esto lo hacemos mendiante:
+			<ul>
+			    <li>Un internal JFrame</li>
+			    <li>Un DesktopPane</li>
+			    <li>Un ciclo For</li>
+			</ul>
+			<br>
+			Una vez que el usuario le da Clic a la opcion <i><b>Nuevo</b></i> El Programa convoca a la funcion <b> CrearNota() </b> El cual contiene el siguiente Codigo <br><br>
+			<code>
+<pre>
+public void crearNota(){
+       medidasPantalla(contador+1 );
+        
+       try{
+            int xH;
+            int yH;
+            hija[contador]=new VentanaHija();
+            hija[contador].crearFrame(contador);
+            hija[contador].setSize(new Dimension(250, 200));
+            yH=hija[contador].getHeight()/2;
+            xH=hija[contador].getWidth()/2;
+            hija[contador].setLocation(x-xH, y-yH);
+            escritorio.add(hija[contador]);
+            contador++;
+        }catch(ArrayIndexOutOfBoundsException ex){
+                JOptionPane.showMessageDialog(new JFrame(), "No se puede crear/adicionar más ventanas","Error",JOptionPane.ERROR_MESSAGE);
+        }
+ }
+ </pre>
+		</code>
+		<br>
+		Como podemos Observar  comienza mandando a llamar medidasPantella, el cual el metodo evalua si el contador es menor a 6  divide la pantalla entre 6 para que se acomode en la primera fila del frame en caso contrario el frame acomoda la ventana hija en una segunda fila posicionandolo al principio.Este metodo utiliza una clase externa la cual se llama Ventanahija la cual genera los <b><i>internal JFrame</i></b>. El codigo es el siguiente
+<br>
+<br>
+<code>
+<pre>
+public class VentanaHija extends JInternalFrame{
+    private final JScrollPane jSPnotas;
+    private final JTextArea jTAnotas;
+    private final JPanel JPNotas;
+    
+    public VentanaHija() {
+        jTAnotas = new JTextArea(12,25);
+        jSPnotas = new JScrollPane(jTAnotas);
+        JPNotas = new JPanel();
+        JPNotas.setLayout(new GridLayout(1, 1));
+        
+	}
+    
+    public void crearFrame(int i){
+        
+        JPNotas.add(jSPnotas);
+        add(JPNotas);
+        setTitle("Ventana "+(i+1));
+        visualizar();
+    }
+    
+    public void crearFrame(String path, String contenido){
+        jTAnotas.insert(contenido, 0);
+        JPNotas.add(jSPnotas);
+        add(JPNotas);
+        setTitle(path);
+        visualizar();
+        
+    }
+    
+    public void visualizar(){
+        pack();
+        setVisible(true);
+        setLocation(10, 10);
+        setResizable(true);
+        setMaximizable(true);
+        setClosable(true);
+        setIconifiable(true);  
+        
+    }
+    
+    public String obtenerTexto(){
+        String contenido="";
+        contenido=jTAnotas.getText();
+        return contenido;
+        
+    }
+    
+}
+</pre> 
+</code>
+<br>
+<br>
+
+Como podemos ver VentanaHija hereda de <b>JInternalFrame</b>  Esto hace que se cree un Frame dentro de un JFrame creado anteriormente como si fuera un JPanel.  Dentro de el JFrame se instanciaron  un  JTextArea del Tamaño del JInternalFrame para asi pudiera verse como un procesador de Textos ademas de que se agrego un JScrollbar el cual aparece cuando el texto es mayor al JInternalFrame no se salga.La Ventana tiene un acomodo tipo <b>GridLayout</b>. 
+		</p>
+	</section>
+</body>
+</html>
+
